@@ -3,3 +3,4 @@ uuid = "1ab601d2-6f50-40ed-b955-b60aa8b1c9f1"
 repo = "https://github.com/semiotic-ai/SemioticJLRegistry"
 
 [packages]
+871720c8-5dfb-4fa2-998e-3fe6ebd08819 = { name = "TheGraphData", path = "T/TheGraphData" }
