@@ -66,6 +66,8 @@ That's it!
 If you meet the [automerge requirements](https://juliaregistries.github.io/RegistryCI.jl/stable/guidelines/), you won't have to do anything more.
 Else, a reviewer may contact you.
 
+Check out this [example PR] as a reference.
+
 ## Troubleshooting
 
 If it's asking you for your username and password when you try to pull from or push to the registry, you probably added the registry via HTTPS, rather than SSH.
