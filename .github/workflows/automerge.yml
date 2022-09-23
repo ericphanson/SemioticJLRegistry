@@ -56,6 +56,7 @@ jobs:
       - run: julia --color=yes -e 'import Pkg; Pkg.Registry.update()'
       - run: .ci/instantiate.sh
       - run: julia --color=yes --project=.ci/ -e 'import Pkg; Pkg.precompile()'
+      - run: touch ~/.ssh/known_hosts
       - run: ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
       - name: AutoMerge.run
         env:
