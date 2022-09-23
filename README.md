@@ -31,15 +31,40 @@ julia> ] add TheGraphData
 
 ## Adding Your Packages To The Registry
 
+
+You need to have already added the registry for this to work.
+Also, make just you are in the environment of the package you want to add (starting julia with `--project` or using `activate projectpath` will both suffice).
+
+**NOTE:** The *main* branch is protected.
+If you try to register your 
+
+### First-Time
 Register your project using the `register` function from [LocalRegistry.jl](https://github.com/GunnarFarneback/LocalRegistry.jl).
 As an example, here we register `TheGraphData`
 
 ```julia
-julia> register(TheGraphData; registry="SemioticJLRegistry", repo="git@github.com:semiotic-ai/TheGraphData.jl.git")
+julia> register(TheGraphData; registry="SemioticJLRegistry", repo="git@github.com:semiotic-ai/TheGraphData.jl.git", branch="MyRepo/v0.1.0")
 ```
 
-You need to have already added the registry for this to work.
-Also, make just you are in the environment of the package you want to add (starting julia with `--project` or using `activate projectpath` will both suffice).
+Continue in [Creating A PR](#creating-a-pr).
+
+### Subsequent Updates
+
+Once you've registered your package for the first time, you can simplify the command
+
+
+```julia
+julia> register(TheGraphData; branch="MyRepo/v0.1.1")
+```
+
+Continue in [Creating A PR](#creating-a-pr).
+
+### Creating A PR
+
+Now that you've registered to a branch, create a new PR following the template.
+That's it!
+If you meet the [automerge requirements](https://juliaregistries.github.io/RegistryCI.jl/stable/guidelines/), you won't have to do anything more.
+Else, a reviewer may contact you.
 
 ## Troubleshooting
 
