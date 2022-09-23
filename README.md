@@ -19,7 +19,7 @@ set -xg JULIA_PKG_USE_CLI_GIT true
 2. From the Julia REPL
 
 ```julia
-julia> ] registry add https://github.com/semiotic-ai/SemioticJLRegistry
+julia> ] registry add git@github.com:semiotic-ai/SemioticJLRegistry.git
 ```
 
 You should now be able to add our packages using the normal Julia syntax!
@@ -40,3 +40,9 @@ julia> register(TheGraphData; registry="SemioticJLRegistry", repo="git@github.co
 
 You need to have already added the registry for this to work.
 Also, make just you are in the environment of the package you want to add (starting julia with `--project` or using `activate projectpath` will both suffice).
+
+## Troubleshooting
+
+If it's asking you for your username and password when you try to pull from or push to the registry, you probably added the registry via HTTPS, rather than SSH.
+Go in *~/.julia/registries/SemioticJLRegistry* and change the *origin* to use ssh.
+For security reasons, password authentication isn't allowed.
