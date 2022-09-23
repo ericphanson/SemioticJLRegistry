@@ -14,9 +14,11 @@ function _most_recent(
     params = Dict("event" => event)
     json = GitHub.gh_get_json(api, endpoint; auth=auth, params=params)
     workflow_runs = json["workflow_runs"]
+    @show workflow_runs
     for workflow_run in workflow_runs
         if workflow_run["name"] == workflow_name
             if workflow_run["event"] == event
+                @show event
                 created_at = TimeZones.ZonedDateTime(
                     workflow_runs[1]["created_at"],
                     "yyyy-mm-ddTHH:MM:SSzzzz",
