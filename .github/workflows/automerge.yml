@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 env:
     JULIA_PKG_USE_CLI_GIT: true
-    HOME: /home/runner
+    JULIA_SSL_NO_VERIFY_HOSTS: ["**github.com**"]
 jobs:
   AutoMerge:
     timeout-minutes: 60
@@ -56,8 +56,6 @@ jobs:
       - run: julia --color=yes -e 'import Pkg; Pkg.Registry.update()'
       - run: .ci/instantiate.sh
       - run: julia --color=yes --project=.ci/ -e 'import Pkg; Pkg.precompile()'
-      - run: mkdir ~/.ssh/
-      - run: ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
       - name: AutoMerge.run
         env:
           MERGE_NEW_PACKAGES: true
