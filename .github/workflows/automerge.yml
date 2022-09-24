@@ -27,6 +27,11 @@ jobs:
           - x64
     steps:
       - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f # v2.3.4
+      - name: Setting up a git credential helper
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global url."https://${TOKEN}:@github.com/".insteadOf "https://github.com/"
       - uses: julia-actions/setup-julia@0b9b1d2cd24245f151902702d8e73b3f6b910014 # v1.6.0
         with:
           version: ${{ matrix.version }}
